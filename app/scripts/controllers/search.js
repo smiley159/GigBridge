@@ -2,20 +2,17 @@
 
 /**
  * @ngdoc function
- * @name angelHackApp.controller:MainCtrl
+ * @name angelHackApp.controller:SearchCtrl
  * @description
- * # MainCtrl
+ * # SearchCtrl
  * Controller of the angelHackApp
  */
 angular.module('angelHackApp')
-  .controller('MainCtrl', function ($scope,$modal, $log) {
+  .controller('SearchCtrl', function ($scope,$modal,$log) {
 
-
-    $scope.tests = ["1.jpeg","2.jpg","3.jpeg","4.jpeg","5.jpg","6.jpeg"];
-
-    //Modal
-
-    $scope.open = function(image){
+  	$scope.tests = ["1.jpeg","2.jpg","3.jpeg","4.jpeg","5.jpg","6.jpeg",
+  	"1.jpeg","2.jpg","3.jpeg","4.jpeg","5.jpg","6.jpeg","1.jpeg","2.jpg","3.jpeg","4.jpeg","5.jpg","6.jpeg"];
+   $scope.open = function(image){
     	$scope.image = image;
 
     var modalInstance = $modal.open({
@@ -36,10 +33,4 @@ angular.module('angelHackApp')
       $log.info('Modal dismissed at: ' + new Date());
     });
     }
-
-    //End Modal
-
-    
-
-
   });

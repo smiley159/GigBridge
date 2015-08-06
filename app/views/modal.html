@@ -24,19 +24,25 @@
 			<div class="col-md-2">
 				<div class="col-md-12" style="margin:0px; padding:0px; margin-bottom:2px;" ng-repeat="video in videos" >
 					<a ng-click = "setSelected(video); $event.preventDefault();" ng-href="#">
-					<img src="http://img.youtube.com/vi/{{video}}/default.jpg" style="width:100%;">
+						<img src="http://img.youtube.com/vi/{{video}}/default.jpg" style="width:100%;">
 					</a>
 				</div>
 				
 			</div>
-	</div>
+		</div>
+	</tab>
+	<tab heading="Sound Cloud">
+	</tab>
+
+<tab heading="Time Table">
+	<div  ui-calendar="calendar" ng-model="eventSources" style="margin-top:20px;"></div>
 </tab>
-<tab heading="Sound Cloud">Sound Cloud</tab>
-<tab heading="0 Fans">0 Fans</tab>
+
 </tabset>
 
 
 </div>
+
 <div class="modal-footer">
 	<button class="btn btn-danger" ng-click="cancel()">Close</button>
 </div>

@@ -15,6 +15,7 @@ angular
     'ngRoute',
     'ui.bootstrap',
     'youtube-embed',
+    'ui.calendar',
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -33,6 +34,10 @@ angular
       .when('/register', {
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
+      })
+      .when('/search', {
+        templateUrl: 'views/search.html',
+        controller: 'SearchCtrl'
       })
       .otherwise({
         redirectTo: '/'

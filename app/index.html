@@ -12,6 +12,7 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="../bower_components/fullcalendar/dist/fullcalendar.css"/>
      <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- endbuild -->
   </head>
@@ -24,7 +25,93 @@
 
 
 
-   
+   <div class="jumbotron" style="margin-bottom:0px;">
+  <div class="header" style="border:none;">
+    <div class="navbar navbar-default navbar-fixed-top" style="background-color:transparent; border:none;" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="#/index">GigBridge</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+          <ul class="nav navbar-nav" > 
+            <li><a href="#"> Browse Artists</a></li>
+            <li><a href="#"> Voting</a></li>
+            <li><a href="#"> How We Roll</a></li>              
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right" > 
+           <li>  
+             <div class="btn-group" dropdown dropdown-append-to-body>
+              <button id="Sign Up"  class="btn horizontal-padding" style="color:white; background:transparent;" dropdown-toggle>
+               <h5>Sign Up <span class="caret"></span></h5>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="Sign Up">
+
+                <li role="menuitem"><a href="#">Artists</a></li>
+                <li class="divider"></li>
+                <li role="menuitem"><a href="#">Event Planner</a></li>
+              </ul>
+            </div>
+          </li>  
+              <li>  
+             <div class="btn-group" dropdown dropdown-append-to-body>
+              <button id="Login"  class="btn horizontal-padding" style="color:white; background:transparent;" dropdown-toggle>
+               <h5>Log In <span class="caret"></span></h5>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="Login">
+
+                <li role="menuitem"><a href="#">Artists</a></li>
+                <li class="divider"></li>
+                <li role="menuitem"><a href="#">Event Planner</a></li>
+              </ul>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<span style="color:white;">
+  <h1>BOOK LIVE MUSIC</h1> 
+  <p>Better. Faster. Smarter.</p> 
+
+</span>
+
+
+
+</div>
+<div class="panel-body" ng-controller="DatepickerCtrl" style="background-color:black; margin-top:0px; opacity:1;">
+
+  <span class="col-md-3 col-md-offset-3" >
+    <input placeholder="Search Artist" type="text" class="form-control" ></input>
+  </span>
+
+  <span class="col-md-3" >
+    <p class="input-group">
+      <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="{{dt}}" max-date="'2020-06-22'" datepicker-options="dateOptions" datepicker-append-to-body="true" ng-required="true" close-text="Close" show-button-bar="false" />
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="dateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </p>
+  </span>
+
+   <span class="col-md-1" >
+    <a type="button" ng-href="#/search" class="btn btn-primary" >Search</a>
+  </span>
+
+
+</div>
 
 
     
@@ -62,6 +149,10 @@
     <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="../bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js"></script>
+    <script type="text/javascript" src="../bower_components/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="../bower_components/angular-ui-calendar/src/calendar.js"></script>
+<script type="text/javascript" src="../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+<script type="text/javascript" src="../bower_components/fullcalendar/dist/gcal.js"></script>
     <!-- end../bower -->
     <!-- endbuild -->
 
@@ -71,6 +162,8 @@
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/modal.js"></script>
         <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/controllers/search.js"></script>
+        <script src="scripts/controllers/datepicker.js"></script>
         <!-- endbuild -->
 </body>
 </html>

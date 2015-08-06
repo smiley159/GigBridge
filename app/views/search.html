@@ -1,0 +1,22 @@
+
+ <div class="col-md-10 col-md-offset-1">
+ 
+  <h3 style="font-weight:normal;"><p>Your Search Artists</p></h3>
+  <br>
+
+  <div class="col-md-4" ng-repeat=" test in tests track by $index">
+    <a ng-href="#" ng-click="open(test); $event.preventDefault();" style="text-decoration: none;">
+      <div class="panel panel-body shadow" >
+
+        <img class="rounded-top"src="images/{{test}}" style="width:100%; max-height:180px; z-index:0;">
+
+        <div style="margin-left:10px;">
+          <h4>We Are Scientists<h4>
+            <h6>Brooklyn, NY</h6>
+          </div>
+        </div>
+      </a>
+    </div>
+</div>
+
+
