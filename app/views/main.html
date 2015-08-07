@@ -7,6 +7,11 @@
 
 <div class="col-md-10 col-md-offset-1">
 
+  <div class="col-md-1" ng-repeat="genre in genres" style="padding:0px; margin:0px;">
+    <input type="button" class="btn btn-default" style="width:100%;" value="{{genre}}">
+  </div>
+
+
   <h3 style="font-weight:normal;"><p>Trending Artist</p></h3>
   <br>
   <div class="col-md-4" ng-repeat=" test in tests">

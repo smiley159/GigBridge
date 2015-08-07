@@ -39,7 +39,16 @@ angular
         templateUrl: 'views/search.html',
         controller: 'SearchCtrl'
       })
+      .when('/profile', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+   $(function(){
+      $(".player").YTPlayer();
+    });
+

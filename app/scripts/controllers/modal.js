@@ -8,7 +8,7 @@
  * Controller of the angelHackApp
  */
  angular.module('angelHackApp')
- .controller('ModalCtrl', function ($scope,$modalInstance, items) {
+ .controller('ModalCtrl', function ($scope,$modalInstance, items,$timeout) {
 
 
     //modal//
@@ -19,6 +19,8 @@
     $scope.ok = function () {
       $modalInstance.close($scope.items);
     };
+
+  
 
     $scope.videos = [
     "gS9o1FAszdk",
@@ -31,6 +33,8 @@
 
     $scope.setSelected = function(select){
       $scope.selected = select;
+      console.log("TEST");
+      $('#navigation').hide();
     }
 
     $scope.cancel = function () {
@@ -41,6 +45,13 @@
 
 
   //Calendar
+
+  $scope.renderCalendar = function (calendarId) {
+    $timeout(function () {
+        var calendarTag = $('#' + calendarId);
+        calendarTag.fullCalendar('render');
+    }, 0);
+};
 
   $scope.eventSources = [
   {

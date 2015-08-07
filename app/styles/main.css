@@ -82,18 +82,23 @@ body {
   }
 }
 
-.jumbotron .navbar-default .navbar-nav>li>a {
-    color: white;
+
+.navbar-default .navbar-nav>li>a{
+  color:white;
 }
 
 .navbar>.container .navbar-brand{
-  color:white;
+  color: white;
 }
 
 div .shadow{
   box-shadow: 0 0 2px black;
   padding:0px;
   opacity: .9
+}
+
+div .shadowNoHover{
+  box-shadow: 0 0 2px black;  
 }
 
 
