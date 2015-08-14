@@ -8,39 +8,51 @@
  * Controller of the angelHackApp
  */
 angular.module('angelHackApp')
-  .controller('MainCtrl', function ($scope,$modal, $log) {
+  .controller('MainCtrl', function ($scope,$modal,$log,Band,allBands) {
 
+   
 
-    $scope.tests = ["1.jpeg","2.jpg","3.jpeg","4.jpeg","5.jpg","6.jpeg"];
-    $scope.genres = ["Genre","Alternative","Blues","Classical","Country","Dance","Electronic","Folk","HipHop/Rap",
-    "Indie Pop","Indie Rock","Jazz","Latin","Opera","Pop","R&B/Soul","Reggae","Rock"];
+      $(function(){
+      $(".player").YTPlayer();
+    });
+      
+
+    $("#Browse").click(function() {
+    $('html,body').animate({
+        scrollTop: $("#test").offset().top-50},
+        'slow');
+    });
+
+    //carousel
+
+    $('#myCarousel').carousel({
+  interval: 2000
+  })
+
+$('.carousel .item').each(function(){
+  var next = $(this).next();
+  if (!next.length) {
+    next = $(this).siblings(':first');
+  }
+  next.children(':first-child').clone().appendTo($(this));
+  
+  if (next.next().length>0) {
+    next.next().children(':first-child').clone().appendTo($(this));
+  }
+  else {
+    $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+  }
+});
+
+//carousel Done
+
+    $scope.tests = allBands.data;
+    console.log(allBands.data);
+    
 
     //Modal
 
-    $scope.open = function(image){
-    	$scope.image = image;
-
-      $('#navigation').hide('fade');
-
-    var modalInstance = $modal.open({
-      animation: true,
-      templateUrl: 'views/modal.html',
-      controller: 'ModalCtrl',
-      size: 'md',
-      resolve: {
-        items: function () {
-          return $scope.image;
-        }
-      }
-    });
-
-    modalInstance.result.then(function (selectedItem) {
-      $scope.selected = selectedItem;
-    }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
-        $('#navigation').show('fade');
-    });
-    }
+    
 
     //End Modal
 

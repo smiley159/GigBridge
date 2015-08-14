@@ -92,7 +92,7 @@ body {
 }
 
 div .shadow{
-  box-shadow: 0 0 2px black;
+  box-shadow: 0 0 1px black;
   padding:0px;
   opacity: .9
 }
@@ -131,16 +131,54 @@ div .shadowNoHover{
 
 .jumbotron {
     margin-bottom: 0px;
-    background-image: url('../images/Header.jpeg');
-    background-position: 0% 25%;
+   
     background-size: cover;
-    opacity: .8;
+    
 
 }
 
 .horizontal-padding{
   padding-left: -30px;
   padding-right: -30px;
+}
+
+.carousel-height{
+  height:30vh;
+  display:block;
+    margin:auto;
+
+}
+
+.carousel-image-padding{
+  margin:0px;
+  padding: 0px;
+}
+.carousel-inner .active.left { left: -33%; }
+.carousel-inner .next        { left:  33%; }
+.carousel-inner .prev        { left: -33%; }
+.carousel-control.left,.carousel-control.right {background-image:none;}
+
+.coming-event{
+margin:20px 20px 10px 20px;
+
+}
+
+.jumbotron-background{
+
+   background-image: url('../images/background.jpg');
+}
+
+a:focus {
+    outline: none;
+}
+
+a, a:hover, a:focus{
+  text-decoration: none;
+  
+}
+
+a{
+  color:black;
 }
 
 

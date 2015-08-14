@@ -1,15 +1,16 @@
 
 <div class="modal-header">
-	<a ng-href="#/profile" style="text-decoration:none;"><h3 class="modal-title">Profile</h3></a>
+	<h3 class="modal-title">Profile</h3>
 </div>
 <div class="modal-body">
 	<div class="row">
 		<div class="col-md-4">
-			<img class=""src="images/{{items}}" style="width:100%;">
+			<img class=""src="images/{{band.band_profile_picture}}" style="width:100%;">
 		</div>
 		<div class="col-md-8">
 			<h3 style="display:inline;">GigBridge</h3>
 			<p>We are a new startup team called GigBridge</p>
+			<button ng-click="cancel(); viewProfile();" class="btn btn-success">View Profile</button>
 			<input type="button" class="btn btn-success" value="BOOK THIS ARTIST"/>
 		</div>
 	</div>
@@ -21,10 +22,10 @@
 				</youtube-video>
 			</div>
 
-			<div class="col-md-2">
-				<div class="col-md-12" style="margin:0px; padding:0px; margin-bottom:2px;" ng-repeat="video in videos" >
-					<a ng-click = "setSelected(video); $event.preventDefault();" ng-href="#">
-						<img src="http://img.youtube.com/vi/{{video}}/default.jpg" style="width:100%;">
+			<div class="col-md-2 ">
+				<div class="col-md-12 col-sm-3 col-xs-3" style="margin:0px; padding:0px; margin-bottom:2px;" ng-repeat="video in videos" >
+					<a ng-click = "setSelected(video.youtube_id); $event.preventDefault();" ng-href="#">
+						<img src="http://img.youtube.com/vi/{{video.youtube_id}}/default.jpg" style="width:100%;">
 					</a>
 				</div>
 				
@@ -33,7 +34,10 @@
 	</tab>
 	<tab heading="Sound Cloud">
 	
-			<iframe width="100%" height="461" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/3615283&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
+			
+			<iframe width="100%" height="461" scrolling="no" frameborder="no" src="{{sound}}"></iframe>
+
+			
 
 		
 	</tab>

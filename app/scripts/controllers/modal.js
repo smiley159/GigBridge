@@ -8,33 +8,43 @@
  * Controller of the angelHackApp
  */
  angular.module('angelHackApp')
- .controller('ModalCtrl', function ($scope,$modalInstance, items,$timeout) {
+ .controller('ModalCtrl', function ($scope,$location,$modalInstance, items,$timeout,videos,sound,eventsList,profile) {
 
 
     //modal//
 
-    $scope.items = items;
-    console.log(items);
+    $scope.viewProfile = function(){
+      profile.setBand(items);
+      profile.setVideos(videos.data);
+      profile.setEventsList(eventsList.data);
+      profile.setSound(sound.data);
+      $location.path('profile');
+
+    }
+
+    $scope.band = items;
+    console.log($scope.band);
 
     $scope.ok = function () {
-      $modalInstance.close($scope.items);
+      $modalInstance.close($scope.band);
     };
 
   
+  
 
-    $scope.videos = [
-    "gS9o1FAszdk",
-    "1y6smkh6c-0",
-    "3OnnDqH6Wj8",
-    ];
+      $scope.videos = videos.data;
+      $scope.selected = $scope.videos[0].youtube_id;
+
+  
+      console.log(sound.data);
+      $scope.sound = sound.data[0].sound_embed;
 
 
-    $scope.selected = $scope.videos[0];
+    
 
     $scope.setSelected = function(select){
       $scope.selected = select;
-      console.log("TEST");
-      $('#navigation').hide();
+      
     }
 
     $scope.cancel = function () {
@@ -49,23 +59,52 @@
   $scope.renderCalendar = function (calendarId) {
     $timeout(function () {
         var calendarTag = $('#' + calendarId);
+        $scope.calendarId = calendarId;
         calendarTag.fullCalendar('render');
     }, 0);
 };
 
-  $scope.eventSources = [
-  {
-     events: [
+$scope.eventsList = [
+       {
+            title  : 'event1',
+            start  : '2015-08-01'
+        },
         {
-            title: 'Final Pitch',
-            start: '2015-08-06',
-            url: 'http://smilehavetime.com/app'
+            title  : 'event2',
+            start  : '2015-08-05',
+            end    : '2015-08-07'
         },
         // other events here
-    ]
+    ];
+
+    console.log(eventsList.data);
+    
+$scope.eventSources = [
+  {
+     events: eventsList.data,
   }
   ];
 
+
+
+
+// $scope.eventPromise = events.getEventById($scope.band.band_id);
+// $scope.eventPromise.success(function(response){
+
+//   var test =  $scope.eventsList.slice(0, $scope.eventsList.length);
+//   for(var i = 0; i < response.length; ++i) {
+//     var temp = {title : response[i].title, start: response[i].start};
+//       $scope.eventsList.push(temp);
+//   }
+
+//   $scope.eventsList = temp;
+
+//   $('#someCalendarId').fullCalendar('refetchEvents');
+
+  
+// });
+
+  
 
   $scope.calendar = { 
       
@@ -81,6 +120,7 @@
       eventClick: function(event) {
         if (event.url) {
             window.open(event.url);
+            $('#someCalendarId').fullCalendar( 'addEventSource',$scope.eventsList );
             return false;
         }
       }

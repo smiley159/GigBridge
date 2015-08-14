@@ -1,28 +1,154 @@
 
 
-<div class="col-md-12">
-	<div class="col-md-12 shadowNoHover test" style="margin-top:20px; background:white; padding:20px;">
-		<div class="col-md-3 ">
-			<img class=""src="images/1.jpeg" style="width:100%;">
+<div class="col-md-12" style="margin-top:50px;">
+
+	
+    <!--End of col-md-6-->
+
+
+
+<!-- /////////////// -->
+
+	<div class="col-md-7">
+		
+			<div class="jumbotron col-md-12 jumbotron-background" >
+				<div class="col-md-8 col-md-offset-2" style="border:2px;">
+					<img src="images/{{band.band_profile_picture}}" style="width:100%;  border-style: solid;
+    border-width: 5px; border-color:white;"></img>
+
+				</div>
+				<div class="col-md-12">
+						<hr style="color: white;
+background-color: white;
+height: 2px;">
+			<strong><h3>About {{band.band_name}}</h3></strong>
+			<hr style="color: white;
+background-color: white;
+height: 2px;">
+			<p>{{band.band_description}}</p>
+			<input type="button" class="btn btn-success" value="BOOK REQUEST">
+			</div>
+					
+			</div>
+
+
+
+		
+
+		<div class="col-md-12 " style="margin-top:30px;">
+			<table class="table table-hover table-striped table-fixed-header">
+				 	<thead>
+				 		<center><h3>UP COMING EVENT</h3></center>
+				  </thead>
+				<thead class="header">
+
+ 
+				<tr>
+					<th>
+						Date
+					</th>
+					<th>
+						Title
+					</th>
+					<th>
+						Detail
+					</th>
+				</tr>
+				 </thead>
+				<tr ng-repeat=" event in eventsList">
+					<td>
+						{{event.start | dateTime}}
+					</td>
+					<td>
+						{{event.title}}
+					</td>
+					<td>
+						<input type="button" class="btn btn-primary" value="Buy Ticket"/>
+					</td>
+
+				</tr>
+
+			</table>
+
+		</div>
+	</div>
+	
+
+
+	<div class="col-md-5">
+		
+		<div class="col-md-12 jumbotron jumbotron-background" style="padding-top:0px;">
+			<img src="images/youtube.jpg" style="width:100%; margin:10px 0px 10px 0px;">
+			<div class="col-md-12" style="margin:0px; padding:0px;">
+				<youtube-video video-id="selected" player-width="'100%'"></youtube-video>
+				
+			</div>
+
+
+			<div class="col-md-2 col-sm-3 col-xs-3" style="margin:0px; padding:0px; margin-right:2px;" ng-repeat="video in videos">
+				<a ng-click = "setSelected(video); $event.preventDefault();" ng-href="#">
+					<img src="http://img.youtube.com/vi/{{video.youtube_id}}/default.jpg" style="width:100%;">
+				</a>
+			</div>
 		</div>
 
-		<div class="col-md-7">
+		<div class="col-md-12 jumbotron jumbotron-background" style="margin-top:20px; padding:10px;">
+			<img src="images/soundcloud.png" style="width:100%;">
+			<iframe width="100%" height="461" scrolling="no" frameborder="no" src="{{sound[0].sound_embed}}"></iframe>
+
+		</div>
+	</div>
+	
+
+</div>
+
+<!-- <div class="col-md-10 col-md-offset-1">
+	<div class="col-md-8 shadowNoHover" style="margin-top:20px; padding:20px; height:220px;">
+		<div class="col-md-6 ">
+			<img class=""src="images/1.jpeg" style="">
+		</div>
+
+		<div class="col-md-6">
 			<h3 style="display:inline;">GigBridge</h3>
 
 			<h4>About GigBridge</h4>
 			<p>
-				While Caribou has been touring the globe throughout 2012 in support of Radiohead, Dan Snaith has fallen deeper into his love affair with the dance floor to bring us a full-length release as Daphni. The first Daphni album of shape-shifting works is titled
+				While Caribou has been touring the globe throughout 2012 in support of Radiohead, Dan Snaith has 
 			</p>
 
 		</div>
 	</div>
+	<div class="col-md-4 shadowNoHover" style="margin-top:20px; padding:20px; height:220px;">
+		<div style="height:100%;">
+			
+		</div>
 
-	<div class="col-md-12" style="margin-top:40px; margin-bottom:40px;">
+	</div>
+
+	<div class="col-md-12 shadowNoHover " style="margin-top:40px; ">
+	<div class="coming-event" style="height:150px; padding:0px; border:1px;	">
+		 <div class="col-md-2 shadowNoHover" style="height:100%; border:1px;"></div>
+		 <div class="col-md-8 shadowNoHover" style="height:100%; border:1px;" ></div>
+		 <div class="col-md-2 shadowNoHover" style="height:100%; border:1px;"></div>
+		</div>
+		<div class="coming-event" style="height:150px; padding:0px; border:1px;	">
+		 <div class="col-md-2 shadowNoHover" style="height:100%; border:1px;"></div>
+		 <div class="col-md-8 shadowNoHover" style="height:100%; border:1px;" ></div>
+		 <div class="col-md-2 shadowNoHover" style="height:100%; border:1px;"></div>
+		</div>
+		<div class="coming-event" style="height:150px; padding:0px; border:1px;	">
+		 <div class="col-md-2 shadowNoHover" style="height:100%; border:1px;"></div>
+		 <div class="col-md-8 shadowNoHover" style="height:100%; border:1px;" ></div>
+		 <div class="col-md-2 shadowNoHover" style="height:100%; border:1px;"></div>
+		</div>
+	</div>
+
+	<div class="col-md-12" style="margin-top:40px; margin-bottom:40px; padding:0px;">
 		<div class="col-md-6 shadowNoHover" style="background:white; padding:20px;">
 			<div class="col-md-12" style="margin:0px; padding:0px;">
 				<youtube-video video-id="selected" player-width="'100%'"></youtube-video>
-			</youtube-video>
-		</div>
+				
+			</div>
 
 
 		<div class="col-md-2" style="margin:0px; padding:0px; margin-right:2px;" ng-repeat="video in videos">
@@ -40,7 +166,7 @@
 
 
 </div>
-</div>
+</div> -->
 
 
 

@@ -8,6 +8,10 @@
  *
  * Main module of the application.
  */
+
+
+
+
 angular
   .module('angelHackApp', [
     'ngCookies',
@@ -16,12 +20,28 @@ angular
     'ui.bootstrap',
     'youtube-embed',
     'ui.calendar',
+    'angularjs-dropdown-multiselect',
+    'LocalStorageModule',
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider,$sceDelegateProvider) {
+
+    $sceDelegateProvider.resourceUrlWhitelist([
+    // Allow same origin resource loads.
+    'self',
+    // Allow loading from our assets domain.  Notice the difference between * and **.
+   
+    'https://*.soundcloud.com/player/**'
+  ]);
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        resolve:{
+       allBands: function(Band){
+        return Band.allBands() //returns a promise
+       }
+    }
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -48,7 +68,20 @@ angular
       });
   });
 
-   $(function(){
-      $(".player").YTPlayer();
-    });
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1596286980637201',
+    xfbml      : true,
+    version    : 'v2.4'
+  });
+};
+
+(function(d, s, id){
+ var js, fjs = d.getElementsByTagName(s)[0];
+ if (d.getElementById(id)) {return;}
+ js = d.createElement(s); js.id = id;
+ js.src = "//connect.facebook.net/en_US/sdk.js";
+ fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+ 
 
