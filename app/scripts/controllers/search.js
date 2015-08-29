@@ -10,9 +10,9 @@
 angular.module('angelHackApp')
   .controller('SearchCtrl', function ($scope,$log,browse,$rootScope) {
 
-  	$scope.tests = browse.getBrowse();
+  	$scope.bands = browse.getBrowse();
     $rootScope.$on('browse', function(event) {
-    $scope.tests = browse.getBrowse();
+    $scope.bands = browse.getBrowse();
 
      });
 

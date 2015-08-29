@@ -1,0 +1,273 @@
+
+ <style type="text/css">
+    .btn-default.active{
+      background-color: #428BCA !important;
+      color:white;
+    }
+  </style>
+
+<div class="col-md-6 col-md-offset-3 shadow" style="padding:20px; margin-top:50px; margin-bottom:30px;">
+  <form  class="simple-form" ng-submit="bookArtist();">
+	<div class="col-md-12" style="text-align:center;"> 
+
+      <div class="panel panel-default col-md-12 col-lg-8 col-lg-offset-2 no-padding sharp-corner">
+          <img src="images/{{band.band_profile_picture}}"  style="width:100%; height:100%"/>
+          <div class="col-md-12" style="padding:10px;">
+
+            <div class="col-md-12" style="padding:0px; ">
+              <div class="col-md-12">
+                <h4>{{band.band_name}}</h4>
+              </div>
+
+            </div>
+
+            <div style="color:grey">
+             <div class="col-md-12" style="padding:0px;">
+
+              <div class="col-md-12 col-xs-10 col-sm-10">{{band.band_genres|genreFilter}}</div>
+
+            </div>
+            <div class="col-md-12" style="padding:0px;">
+
+              <div class="col-md-12 col-xs-10 col-sm-10">Up to {{band.band_price}}&nbsp&#3647</div>
+
+            </div>
+
+
+          </div>
+
+
+
+
+        </div>
+
+    </div>
+	<h3 style="font-weight:normal;" class="col-md-12">Request Booking</h3>
+	
+	</div>
+
+	<div class="col-md-12">
+
+		<h3>Booker's Detail</h3>
+
+		<hr>
+
+	</div>
+ 
+  <div class="form-group col-md-6">
+    <label for="fName">First Name</label>
+    <input  type="text" ng-model="booker.first_name" class="form-control" id="fName" ng-required="true">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="lName">Last Name</label>
+    <input type="text" ng-model="booker.last_name"class="form-control" id="lName" ng-required="true">
+  </div>
+
+  <div class="form-group col-md-12">
+    <label for="email">Email</label>
+    <input type="email" ng-model="booker.email"class="form-control" id="email" ng-required="true">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="pNumber">Phone Number</label>
+    <input type="text" ng-model="booker.number" class="form-control" id="pNumber" ng-required="true">
+  </div>
+
+     <div class="form-group col-md-6">
+    <label for="text">Line ID</label>
+    <input type="text" ng-model="booker.line"class="form-control" id="text" ng-required="true">
+  </div>
+
+   
+
+
+
+  
+
+  <div class="col-md-12">
+
+		<h3>Event's Detail</h3>
+
+		<hr>
+
+	</div>
+
+	 <div class="form-group col-md-12">
+    <label for="title"> Event's Title</label>
+    <input type="text" ng-model="event.title"class="form-control" id="title" ng-required="true">
+  </div>
+
+
+   <div class="form-group col-md-6">
+    <label for="date">Event's Date</label>
+    <p class="input-group">
+      <input class="form-control" datepicker-popup="{{format}}" ng-model="event.date" is-open="opened" min-date="{{datetime}}" max-date="'2020-06-22'" datepicker-options="dateOptions" datepicker-append-to-body="false" ng-required="true" close-text="Close" show-button-bar="false" ng-required="true" />
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="dateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </p>
+  </div>
+
+<!--   <div class="form-group col-md-6">
+    <label >Time</label>
+    <div dropdown on-toggle="toggled(open)" dropdown-append-to-body="true" class="scrollable">
+      <input  id="time" dropdown-toggle class="form-control" ng-required="true" ng-model="event.time">
+      <ul class="dropdown-menu" aria-labelledby="time">
+        <li ng-repeat="choice in items">
+          <a ng-click="setTime(choice)">{{choice}}</a>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+  <div class="col-md-6 form-group">
+    <label>Time</label>
+  <div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{event.time}}
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu scrollable" >
+    <li ng-repeat = "choice in items" style="text-align:center;"><a ng-click="setTime(choice)">{{choice}}</a></li>
+  </ul>
+</div>
+</div>
+  
+
+    <div class="form-group col-md-12">
+    <label for="booking"> Location</label>
+    <input type="text" id="txtPlaces" ng-model="event.location" placeholder="" class="form-control" required>
+  </div>
+
+    <div class="form-group col-md-12">
+    <label for="describe">Kind of show</label>
+    <a id="kind1" type="button" ng-click="toggle(1);" class="active btn btn-default col-md-12">
+      <span class="icon icon-Amplified" style="font-size:14px;"></span> Amplified
+    </a>
+    <a id="kind2" type="button" ng-click="toggle(2);" class="btn btn-default col-md-12" value="Acoustic">
+        <span class="icon icon-Acoustic" style="font-size:14px;"></span> Acoustic
+    </a>  
+  </div>
+
+
+	<div class="form-group col-md-12">
+    <label for="describe">Describe Yout Event</label>
+   <textarea ng-model="event.description" ckeditor="editorOptions" class="form-control"/>
+  </div>
+  
+    <div class="form-group col-md-12">
+    <label for="describe">Equipment Provided</label>
+    <textarea ng-model="event.equipment" ckeditor="editorOptions" class="form-control"/>
+  </div>
+
+
+
+ 
+
+
+  <div class="form-group col-md-12">
+    <h3>Offer</h3>
+    <hr>
+    <table class="table borderless">
+
+        <tr>
+      <td>
+
+        
+
+        <span class="big-icon icon-Bath col-md-2">
+        </span>
+        <div class="col-md-10" style="padding:0px;">
+          <div class="col-md-5" style="padding-right:0px;">
+            <input id="Show Time" ng-model="offer.show_time" type="text" class="form-control" placeholder="ShowTime">  
+          </div>
+          <div class="col-md-2" style="text-align:center; margin:0px; padding:0px;">
+            <strong><h4>For</h4></strong>
+          </div>
+          <div class="col-md-5" style="padding-left:0px;">
+            <input id="Price" type="text" ng-model="offer.price" class="form-control" placeholder="Price">  
+          </div>
+          
+        </div>    
+
+      </td>
+    </tr>
+
+    
+
+    
+    <tr>
+      <td>
+
+        
+
+        <span class="big-icon icon-Drink col-md-2">
+        </span>
+        <div class="col-md-10">
+          <input id="text" type="text" ng-model="offer.alcohol" class="form-control" placeholder="Beer,Whisky etc. (optional)">  
+        </div>    
+
+      </td>
+    </tr>
+
+
+
+    <tr>
+      <td>
+
+
+        <span class="big-icon icon-Food col-md-2">
+        </span>
+        <div class="col-md-10">
+          <input id="food" type="text" ng-model="offer.food" class="form-control" placeholder="Food (optional)" ng-required>      
+        </div>  
+      </tr>
+    </td>
+
+
+  </tr>
+  <tr>
+    <td>
+
+
+      <span class="big-icon icon-travel col-md-2">
+      </span>
+      <div class="col-md-10">
+        <input id="transportation" ng-model="offer.transportation" type="text" class="form-control" placeholder="Transportation (optional)" ng-required>      
+      </div>
+    </td> 
+  </tr>
+
+
+
+  <tr>
+
+    <td>
+
+      <span class="big-icon icon-Hotel col-md-2">
+      </span>
+      <div class="col-md-10">
+        <input id="Hotel" type="text" ng-model="offer.hotel" class="form-control" placeholder="Hotel (optional)" ng-required>      
+      </div>  
+    </td>
+
+  </tr>
+
+
+  <tr>
+    <td>
+      <span class="big-icon icon-others col-md-2">
+      </span>
+      <div class="col-md-10">
+        <input id="Other" type="text" ng-model="offer.other" class="form-control" placeholder="Other (optional)" ng-required>      
+      </div>
+    </td>
+  </tr>
+
+</table>
+ 
+
+ <input style="margin-top:10px;" type="submit" class="btn btn-primary col-md-4 col-md-offset-4" value="Make Offer"></input>
+  </div>
+</form>
+  
+</div>
+
+

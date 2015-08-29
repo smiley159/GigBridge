@@ -13,7 +13,7 @@
  	var vm = this;
  	vm.getVideoById = function(id){
 
- 		console.log(id);
+ 		
  		var request = $http({
  			method: "post",
  			url: "php/video.php", 

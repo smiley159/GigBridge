@@ -1,0 +1,26 @@
+<div class="col-md-10 col-md-offset-1" style="margin-top:50px;">
+
+
+<div class="col-md-12 panel panel-default" style="padding:20px;">
+<h2>My Events</h2>
+<hr>
+<table id="table" class="table table-hover table-striped">
+	<tr>
+		<th>Date and Time</th>
+		<th>Event Title</th>
+		<th>Location</th>
+		<th>Action</th>
+	</tr>
+	<tr ng-repeat="event in events">
+		<td>{{event.event_date}}&nbsp{{event.event_time}}</td>
+		<td>{{event.event_title}}</td>
+		<td>{{event.event_location}}</td>
+		
+		<td><a class="btn btn-success" ng-href="#/bookingSummary/{{event.request_id}}">View Detail</a></td>
+	</tr>
+	
+
+</div>
+</div>
+
+</div>

@@ -13,18 +13,37 @@ angular.module('angelHackApp')
   var vm = this;
  	vm.getEventById = function(id){
 
- 		console.log(id);
- 		var request = $http({
+ 	var request =  $http({
  			method: "post",
  			url: "php/event.php", 
  			data: { 
- 				task:'getEventById',
- 				band_id: id,     
+ 				task:'getEventById', 
+ 				band_id: id,
  			}, 
  			headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 
  		});
- 	
+
  		return request;
+ 	
+ 		
+ 	};
+
+ 	vm.getEventByEventId = function(id){
+
+ 	var request =  $http({
+ 			method: "post",
+ 			url: "php/event.php", 
+ 			data: { 
+ 				task:'getEventByEventId', 
+ 				event_id: id,
+ 			}, 
+ 			headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+ 		});
+
+ 		return request;
+ 	
+ 		
  	};
   });

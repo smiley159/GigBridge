@@ -13,13 +13,13 @@ angular.module('angelHackApp')
   	
 
       this.setBand = function(band){
-      	console.log(band);
+
       	localStorageService.set('profileBand',band);
       	
       };
 
       this.getBand = function(){
-      	console.log(localStorageService.get('profileBand'));
+    
 
       	return localStorageService.get('profileBand');
       	
@@ -32,7 +32,7 @@ angular.module('angelHackApp')
       };
 
        this.getVideos= function(){
-       	console.log(localStorageService.get('profileVideos'));
+
 
       	return localStorageService.get('profileVideos');
 
@@ -44,8 +44,7 @@ angular.module('angelHackApp')
       };
 
        this.getEventsList = function(){
-       	console.log(localStorageService.get('profileEventsList'));
-
+     
 
       	return localStorageService.get('profileEventsList');
 
@@ -57,7 +56,7 @@ angular.module('angelHackApp')
       };
 
        this.getSound = function(){
-       	console.log(localStorageService.get('profileSound'));
+
 
       	return localStorageService.get('profileSound');
 

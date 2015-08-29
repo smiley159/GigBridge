@@ -15,26 +15,6 @@ if($task == 'getSoundById'){
 
 	echo json_encode($response);
 
-}else if($task=="getAllTopic"){
-
-	$response=$conn->select("Topic", "*");
-	echo json_encode($response);
-		
-}else if($task=="searchTopic"){
-
-	$keyword = $request->keyword;
-
-	$response=$conn->query(
-		"SELECT * 
-		 FROM 
-    	Topic 
-		WHERE 
-    	topicHeader LIKE '%".$keyword."%' 
-		OR topicContent LIKE '%".$keyword."%';"
-	)->fetchAll();
-
-	echo json_encode($response);
-		
 };
 		
 

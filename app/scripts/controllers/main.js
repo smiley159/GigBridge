@@ -1,3 +1,4 @@
+
 'use strict';
 
 /**
@@ -8,11 +9,11 @@
  * Controller of the angelHackApp
  */
 angular.module('angelHackApp')
-  .controller('MainCtrl', function ($scope,$modal,$log,Band,allBands) {
+  .controller('MainCtrl', function ($scope,$modal,$log,Band) {
 
-   
+ 
 
-      $(function(){
+    $(function(){
       $(".player").YTPlayer();
     });
       
@@ -23,38 +24,37 @@ angular.module('angelHackApp')
         'slow');
     });
 
+
+    $("#why").click(function() {
+    $('html,body').animate({
+        scrollTop: $("#whyLensod").offset().top-50},
+        'slow');
+    });
+
     //carousel
 
     $('#myCarousel').carousel({
   interval: 2000
   })
 
-$('.carousel .item').each(function(){
-  var next = $(this).next();
-  if (!next.length) {
-    next = $(this).siblings(':first');
-  }
-  next.children(':first-child').clone().appendTo($(this));
-  
-  if (next.next().length>0) {
-    next.next().children(':first-child').clone().appendTo($(this));
-  }
-  else {
-    $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
-  }
-});
 
-//carousel Done
 
-    $scope.tests = allBands.data;
-    console.log(allBands.data);
-    
+    var request = Band.getAllBand();
+    request.success(function(response){
+      
+        $scope.bands = shuffle(response);
+    });
 
-    //Modal
+
+    var shuffle= function(o){
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
+}
 
     
 
-    //End Modal
+
+
 
     
 

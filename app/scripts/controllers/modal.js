@@ -8,7 +8,7 @@
  * Controller of the angelHackApp
  */
  angular.module('angelHackApp')
- .controller('ModalCtrl', function ($scope,$location,$modalInstance, items,$timeout,videos,sound,eventsList,profile) {
+ .controller('ModalCtrl', function ($scope,$location,items,$timeout,videos,sound,eventsList,profile,$modalInstance,authFactory) {
 
 
     //modal//
@@ -18,26 +18,41 @@
       profile.setVideos(videos.data);
       profile.setEventsList(eventsList.data);
       profile.setSound(sound.data);
-      $location.path('profile');
+      $location.path('profile/'+items.band_id);
 
     }
 
+
+
+      $scope.goBook = function(id){
+    
+      $location.path('/booking/'+id);
+    
+
+    }
+
+  $scope.myInterval = 0;
+  $scope.noWrapSlides = true;
+  $scope.slides = videos.data;
+
+
     $scope.band = items;
-    console.log($scope.band);
+  
 
     $scope.ok = function () {
       $modalInstance.close($scope.band);
     };
 
-  
-  
-
-      $scope.videos = videos.data;
-      $scope.selected = $scope.videos[0].youtube_id;
 
   
-      console.log(sound.data);
-      $scope.sound = sound.data[0].sound_embed;
+   
+  if(sound.data[0] != null){
+    $scope.sound = sound.data[0].sound_embed;
+
+  }else{
+    sound == null;
+  }
+  
 
 
     
@@ -126,6 +141,11 @@ $scope.eventSources = [
       }
     
   };
+
+  
+
+
+
 
 
   

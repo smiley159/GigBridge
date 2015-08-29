@@ -11,9 +11,25 @@
  .service('Band', function ($http) {
  	var vm = this;
 
+ 	this.getBandById = function(id){
 
- 	return  {
- 		allBands: function(){return $http({
+ 			var request =  $http({
+            method: "post",
+            url: "php/band.php", 
+            data: { 
+               task:'getBandById',
+               band_id: id,
+           }, 
+           headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+       });
+
+     return request;
+ 	}
+
+ 	this.getAllBand = function(){
+
+ 			var request = $http({
  			method: "post",
  			url: "php/band.php", 
  			data: { 
@@ -22,6 +38,9 @@
  			headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 
  		});
- 	},
- };
+ 	return request;
+ 	}
+
+
+
 });

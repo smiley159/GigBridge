@@ -18,7 +18,7 @@ angular.module('angelHackApp')
       animation: true,
       templateUrl: 'views/modal.html',
       controller: 'ModalCtrl',
-      size: 'md',
+      size: 'lg',
       resolve: {
         items: function () {
           return band;
@@ -39,8 +39,13 @@ angular.module('angelHackApp')
     modalInstance.result.then(function (selectedItem) {
       $scope.selected = selectedItem;
     }, function () {
-      $log.info('Modal dismissed at: ' + new Date());
+      // $log.info('Modal dismissed at: ' + new Date());
         $('#navigation').show('fade');
     });
     }
+
+
+
+
+   
   });

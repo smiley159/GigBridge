@@ -2,11 +2,27 @@
 
 
 
-  <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=mwBGGh2fhfU',containment:'.Big',showControls:true,autoPlay:true,stopMovieOnBlur: false, mute:false, startAt:0,}"></a>
 
-<div class="Big"  style="height: 86vh; margin-bottom:0px; ">
+<!--   <a id="bgndVideo" class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=mwBGGh2fhfU',containment:'.Big',showControls:true,autoPlay:false,stopMovieOnBlur: false, mute:true, startAt:0,}"></a> -->
 
- 
+<link href="styles/footer.css" rel="stylesheet">
+
+
+
+<div class="jumbotron"  style="height: 500px; margin-bottom:0px; color:white;  background-image: url('images/main-bg.jpg'); background-size:cover;">
+
+
+ <div style="margin-top:100px;">
+  <h1>LIVE MUSIC BOOKING</h1>
+  <br></br>
+  <h2 style="font-weight:200;">has never been so easy...</h2>
+  <br></br>
+  <a id="Browse"  class="ghost-buttons ghost-button-rounded-corners">Start Booking Now!</a>
+  <br></br>
+
+  <a id="why"> see how we work</a>
+
+</div>
 
 
 
@@ -15,10 +31,10 @@
 
 
 
-<div class="panel-body" id="test" ng-controller="DatepickerCtrl" style="background-color:black; border-style:solid; border-color:white; border-width:2px 0px 2px 0px;">
+<div class="panel-body" id="test" ng-controller="DatepickerCtrl" style="background-color:black;">
 
 
-  <div class="col-md-1 col-md-offset-1"  translation-texts= "{buttonDefaultText:'Genre'}"ng-dropdown-multiselect="" options="example9data" group-by="type" selected-model="example9model" extra-settings="example9settings"></div>
+  <div class="col-md-1 col-md-offset-2"  translation-texts= "{buttonDefaultText:'Genre'}"ng-dropdown-multiselect="" options="example9data" group-by="type" selected-model="genres" extra-settings="example9settings"></div>
 
   <div class="col-md-3" >
     <input placeholder="Artist Name" type="text" class="form-control" ng-model="name"></input>
@@ -28,14 +44,14 @@
     <input placeholder="Enter Your Budget" step="500" type="number" min="0" class="form-control" ng-model="price" ></input>
   </div>
 
-  <div class="col-md-3" >
+<!--   <div class="col-md-3" >
     <p class="input-group">
       <input type="text" class="form-control" placeholder="Is free on this day" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="{{dt}}" max-date="'2020-06-22'" datepicker-options="dateOptions" datepicker-append-to-body="true" ng-required="true" close-text="Close" show-button-bar="false" />
       <span class="input-group-btn">
         <button type="button" class="btn btn-default" ng-click="dateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
       </span>
     </p>
-  </div>
+  </div> -->
 
 
 
@@ -46,101 +62,125 @@
 
 </div>
 
-<div style="padding-left:2px; height: 30vh;">
+<!-- <div style="height: 30vh;">
   <div class="carousel slide" id="myCarousel"  >
     <div class="carousel-inner">
       <div class="item active">
-        <div class="col-md-4 col-xs-4 col-sm-4 carousel-image-padding"><a href="#"><img src="images/slider1.png" class="img-responsive carousel-height"></a></div>
+        <div class="col-md-4 col-xs-12 col-sm-12 carousel-image-padding"><a href="#"><img src="images/Aey.jpg" class="img-responsive carousel-height"></a></div>
       </div>
       <div class="item">
-        <div class="col-md-4 col-xs-4 col-sm-4 carousel-image-padding"><a href="#"><img src="images/slider2.png" class="img-responsive carousel-height"></a></div>
+        <div class="col-md-4 col-xs-4 col-sm-4 carousel-image-padding"><a href="#"><img src="images/Chote.jpg" class="img-responsive carousel-height"></a></div>
       </div>
       <div class="item">
-        <div class="col-md-4 col-xs-4 col-sm-4 carousel-image-padding"><a href="#"><img src="images/slider3.png" class="img-responsive carousel-height"></a></div>
+        <div class="col-md-4 col-xs-4 col-sm-4 carousel-image-padding"><a href="#"><img src="images/Public.jpg" class="img-responsive carousel-height"></a></div>
       </div>
       <div class="item">
-        <div class="col-md-4 col-xs-4 col-sm-4 carousel-image-padding"><a href="#"><img src="images/slider4.png" class="img-responsive carousel-height"></a></div>
+        <div class="col-md-4 col-xs-4 col-sm-4 carousel-image-padding"><a href="#"><img src="images/Party.jpg" class="img-responsive carousel-height"></a></div>
       </div>
       <div class="item">
-        <div class="col-md-4 col-xs-4 col-sm-4 carousel-image-padding"><a href="#"><img src="images/slider1.png" class="img-responsive carousel-height"></a></div>
+        <div class="col-md-4 col-xs-4 col-sm-4 carousel-image-padding"><a href="#"><img src="images/Wedding.jpg" class="img-responsive carousel-height"></a></div>
       </div>
       <div class="item">
-        <div class="col-md-4 col-xs-4 col-sm-4 carousel-image-padding"><a href="#"><img src="images/slider2.png" class="img-responsive carousel-height"></a></div>
+        <div class="col-md-4 col-xs-4 col-sm-4 carousel-image-padding"><a href="#"><img src="images/Festival.jpg" class="img-responsive carousel-height"></a></div>
       </div>
     </div>
     <a class="left carousel-control" href="#myCarousel" data-slide="prev"  ngNonBindable><i class="glyphicon glyphicon-chevron-left"></i></a>
     <a class="right carousel-control" href="#myCarousel" data-slide="next" ngNonBindable><i class="glyphicon glyphicon-chevron-right"></i></a>
   </div>
-</div>
-
-
+</div> -->
+<div ng-include="'views/carousel.html'"></div>
 
 <div class="col-md-10 col-md-offset-1">
 
   <div class="col-md-12 ">
-    <div class="jumbotron" style="padding:5px 0px 5px 0px; margin-top:20px;"><h3 style="font-weight:normal;"><p>Trending Artist</p></h3></div>
+    <br></br>
+    <h3 style="font-weight:normal;"><p>Featured Artist</p></h3>
     <br>
     <div class="row" style="padding:10px;">
 
-      <div  class="col-md-4 col-sm-4 col-xs-6 col-lg-4 " ng-repeat=" test in tests track by $index" style="padding:5px;">
-        <div ng-controller="ModalControllerCtrl">
-       <a ng-href="#" ng-click="open(test); $event.preventDefault();">
+   <div ng-include="'views/card.html'"></div>
+</div>
+</div>
 
-        <figure class="cap-top" style="width:100%; margin:0px;">
-          <img src="images/{{test.band_profile_picture}}" style="width:100%; height:200px;"/>
-          <figcaption style="width:100%; height:100%;">
-            <h4>{{test.band_name}}<h4>
-              <hr>
-              <h6>Type: Band</h6>
-              <h6>Genres: Acoustic Rock</h6>
-              <h6>Price: From ${{test.band_price}}</h6>
+</div>
 
 
-            
-          </figcaption>
-        </figure>
 
-      </a>
-      </div>
+<div class="jumbotron col-md-12"  style="height: 500px; margin-bottom:0px; color:white;  background-image: url('images/main-bg.jpg'); background-size:cover;">
 
 
+ <div style="margin-top:15vh">
+
+  <h1>Are you an Artist?</h1>
+  <br></br>
+  <a ng-href="#/artistRegister"  class="ghost-buttons ghost-button-rounded-corners">Join Us!</a>
+
+
+</div>
+
+
+
+</div>
+
+<div class="col-md-12" style="padding-top:30px;" id="whyLensod">
+<div style="text-align:center"><h1>How we work</h1></div>
+<div class="col-md-12">
+<div class="marketing">
+
+  <!-- Three columns of text below the carousel -->
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <img class="img-circle" src="images/browse.png">
+      <h2>Browse</h2>
+      <p>Browse and compare artists for your event</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <img class="img-circle" src="images/book.png">
+      <h2>Book</h2>
+      <p>Requested to book your desired artist</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <img class="img-circle" src="images/confirm.png">
+      <h2>Get Live!</h2>
+      <p>Pay to confirm booking and you're done!</p>
     </div>
   </div>
 </div>
 
 
+  <div style="text-align:center" ><h1>Why LENSOD?</h1></div>
+ 
+  <div class="marketing">
 
- <div class="col-md-12 ">
-    <div class="jumbotron" style="padding:5px 0px 5px 0px; margin-top:20px;"><h3 style="font-weight:normal;"><p>Trending DEEJAY</p></h3></div>
-    <br>
-    <div class="row" style="padding:10px;">
-
-      <div  class="col-md-4 col-sm-4 col-xs-6 col-lg-4 " ng-repeat=" test in tests track by $index" style="padding:5px;">
-        <div ng-controller="ModalControllerCtrl">
-       <a ng-href="#" ng-click="open(test); $event.preventDefault();">
-
-        <figure class="cap-top" style="width:100%; margin:0px;">
-          <img src="images/{{test.band_profile_picture}}" style="width:100%; height:200px;"/>
-          <figcaption style="width:100%; height:100%;">
-            <h4>{{test.band_name}}<h4>
-              <hr>
-              <h6>Type: Band</h6>
-              <h6>Genres: Acoustic Rock</h6>
-              <h6>Price: From ${{test.band_price}}</h6>
-
-
-            
-          </figcaption>
-        </figure>
-
-      </a>
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-md-3 text-center">
+        <img class="img-circle" src="images/time.png">
+        <p><h2>Time-efficient</h2></p>
+        <p>Searching for the right artist for your event manually can be time consuming. Browse efficiently through Lensod to save your time and let you worry about other details on getting your event off the ground.</p>
       </div>
-
-
+      <div class="col-md-3 text-center">
+        <img class="img-circle" src="images/quality.png">
+        <p><h2>Quality Artists</h2></p>
+        <p>Each and all of our artists are reviewed and selected to deliver a quality performance for your event.</p>
+      </div>
+      <div class="col-md-3 text-center">
+        <img class="img-circle" src="images/price.png">
+        <p><h2>Fair Price</h2></p>
+        <p>Artist booking agencies often charge you unfair prices without you even knowing, resulting in unnecessary extra costs. With Lensod, we guarantee fair and legit prices with no hidden fees whatsoever.</p>
+      </div>
+      <div class="col-md-3 text-center">
+        <img class="img-circle" src="images/trust.png">
+        <p><h2>Trust</h2></p>
+        <p>We have proper policies in place to protect you against artist no-show. We offer a secure payment gateway to make sure all transactions are traceable and legit.   </p>
+      </div>
     </div>
   </div>
+
+    </div>
+
 </div>
-</div>
+
 
 
 

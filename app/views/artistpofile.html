@@ -1,0 +1,126 @@
+
+
+<div class="col-md-6 col-md-offset-3 shadow" style="margin-top:50px; ;">
+	<form  class="simple-form" ng-submit="submit();">
+		<div style="text-align: center;"><h2>Our stages have been ready for you!</h2></div><br>
+		<div style="text-align: center;">Submit your profile, wait for our confirmation. We will contact you as soon as possible</div>
+		<hr>
+		<div class="col-md-12">
+			<div class="col-md-6 col-md-offset-3">					
+				<img  style="width:100%; margin-top:20px;" ng-show="profile!= null" ngf-src="profile" class="thumb"/>
+				<img  style="width:100%; margin-top:20px;" ng-show="profile == null" src="images/profile_pic.jpg" class="thumb"/>
+				<br></br>
+
+				<input type="button" style="width:100%;" class="btn btn-default" ngf-select ng-model="profile" 
+				ngf-multiple="false" accept="image/*" value="Select Profile Picture" required></input>
+
+			</div>
+		</div>
+		<div class="col-md-12" style="margin-top:20px;">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label>Name</label>
+					<input type="text" ng-model="artist.name" class="form-control" required>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label>Email</label>
+					<input type="email" ng-model="artist.email" class="form-control" required>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label>Facebook</label>
+					<input type="text" ng-model="artist.facebook" class="form-control" required>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Tel</label>
+					<input type="text" ng-model="artist.number" class="form-control" required>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Line ID</label>
+					<input type="text" ng-model="artist.line" class="form-control" required>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-group">
+					<label>Location</label>
+
+					<input type="text" id="txtPlaces" ng-model="artist.location" placeholder="" class="form-control" required>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<label>Genres</label>
+				<div translation-texts= "{buttonDefaultText:'Genre'}" ng-dropdown-multiselect="" options="genresData" group-by="type" selected-model="genres" extra-settings="genresSetting"></div>
+			</div>
+			<div class="form-group col-md-10" style="font-size:15px;">
+				<label>Options</label>
+				<div>
+					<input type="checkbox" ng-model="artist.negotiate"/> &nbsp <span class="icon-Negotiable"></span> Negotiable
+					<input type="checkbox" ng-model="artist.travel"/> &nbsp <span class="icon-travel"></span> Willing to travel 
+					<input type="checkbox" ng-model="artist.acoustic"/> &nbsp <span class="icon-Acoustic"></span> Can play acoustic 
+				</div>
+				
+			</div>
+
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Price(Baht) / Hour</label>
+					<input type="number" min="0" step="500" ng-model="artist.price" class="form-control" required>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-md-12">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label>About</label>
+			
+					<textarea ng-model="artist.description" ckeditor="editorOptions" class="form-control"/>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label>Member</label>
+
+					<textarea ng-model="artist.member" ckeditor="editorOptions" class="form-control"/>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-md-12">
+			<div class="col-md-12">
+				<div class="form-group">
+					<label>Sound Cloud or other Sound Library</label>
+					<input ng type="text" ng-model="artist.sound" class="form-control">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12" >
+			<div class="col-md-12" >
+				<label> Youtube (Video Link)</label>
+				<div class="form-group col-md-12" ng-repeat = "temp in youtubeIndex track by $index" style="padding:0px;">
+					<div class="col-md-11" style="padding:0px;">
+						<input ng-model="youtube[$index]"ng type="text" class="form-control">
+					</div>
+					<div class="col-md-1">
+						<input class="btn btn-danger" ng-show=" $index>0" value="-" type="button" ng-click="removeYoutube($index)"/>
+						<input type="button" class="btn btn-primary" ng-show=" $index==0" ng-click="addYoutube()" value="+">
+					</div>
+				</div>
+
+
+			</div>
+			<div class="col-md-4 col-md-offset-4">
+				<input type="submit" class="btn btn-primary form-control" value="submit"/>
+			</div>
+		</div>
+	</form>
+	</div>

@@ -1,4 +1,4 @@
-
+<!-- 
 <div class="modal-header">
 	<h3 class="modal-title">Profile</h3>
 </div>
@@ -53,4 +53,55 @@
 
 <div class="modal-footer">
 	<button class="btn btn-danger" ng-click="cancel()">Close</button>
+</div> -->
+<div class="panel panel-default col-md-12 col-sm-12 col-xs-12" style="padding:20px;">
+	<div class="no-padding no-margin">
+		<div class="col-md-5 col-xs-12 col-sm-12">
+			<img class=""src="images/{{band.band_profile_picture}}" style="width:100%;"><hr></hr>
+			<div style="text-align:center;"><h3 style="display:inline;">{{band.band_name}}</h3></div><hr></hr>
+			<p><strong>Genres:</strong> Pop Acoustic Rock</p>
+			<p><strong>Price:</strong> {{band.band_price}} per Hour</p>
+			<!-- <p><strong>Show Length:</strong> {{test.band_length}}</p> -->
+			<p ng-if="band.band_negotiate==1"><span class="icon-Negotiable"></span> Negotiable</p>
+			<p ng-if="band.band_acoustic==1"><span class="icon-Acoustic" > </span>Can Play Acoustic</p>
+			<p ng-if="band.band_travel==1"><span class="icon-travel" > </span> Willing to Travel</p>
+			<br></br>
+			<div style="margin-bottom:15px;">
+			<button ng-click="cancel(); viewProfile();" class="btn btn-primary form-control">VIEW PROFILE</button>
+
+			<button ng-click="cancel(); goBook(band.band_id);" style="margin-top:5px;" class="btn btn-primary form-control">BOOK THIS ARTIST</button>
+			</div>
+
+			
+		</div>
+		<div class="col-md-7 col-xs-12 col-sm-12">
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+				<carousel ng-show="slides.length != 0" interval="myInterval" no-wrap="noWrapSlides" >
+					<slide ng-repeat="slide in slides" active="slide.active" >
+						<youtube-video video-id="slide.youtube_id"  player-width="'100%'"></youtube-video>
+					</slide>
+				</carousel>
+						
+				<div ng-show="slides.length == 0">
+						<img  style="width:100%;" src="images/no_youtube.jpeg"/>
+				</div>
+				
+			</div>
+
+			<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" style="margin-top:15px;">
+				<div ng-show="sound == null">
+					<img  style="width:100%;" src="images/no_soundcloud.jpg"/>
+				</div>
+				<div ng-show="sound != null">
+				<iframe width="100%" height="300" scrolling="no" frameborder="no" src="{{sound}}"></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+
+
+
+
+

@@ -11,12 +11,9 @@
  .service('browse', function ($http,$location,localStorageService,$rootScope) {
 
 var vm = this;
- 	this.browse = function(name,price,date){
+ 	this.browse = function(name,price,genres){
  	vm.bands ={};
 
- 	console.log(name);
- 	console.log(price);
- 	console.log(date);
 
  		var request =  $http({
  			method: "post",
@@ -25,23 +22,39 @@ var vm = this;
  				task:'browseBand', 
  				band_name:name,
  				band_price:price,
- 				date:date 
+ 				band_genres:genres ,
  			}, 
  			headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
 
  		});
 
  		request.success(function(response){
- 			console.log(response);
+
  			localStorageService.set('browse',response);
  			$rootScope.$emit('browse');
  			$location.path('search');
  		});
- 	}
+ 	};
 
  	this.getBrowse = function(){
  		return localStorageService.get('browse');
 
+ 	};
+
+ 	this.getBandByGenre = function(genres){
+
+ 		var request =  $http({
+ 			method: "post",
+ 			url: "php/band.php", 
+ 			data: { 
+ 				task:'getBandByGenre', 
+ 				band_genres:genres ,
+ 			}, 
+ 			headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+
+ 		});
+
+ 		return request;
  	}
 
  	});

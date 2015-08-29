@@ -1,11 +1,15 @@
 
 
+<div style="margin-top:50px;">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div ng-include="'views/carousel.html'"></div>
+</div>
 
-<div class="col-md-10 col-md-offset-1">
-  <div class="panel-body" id="test" ng-controller="DatepickerCtrl" style="background-color:black; margin-top:30px;">
+
+  <div class="panel-body" id="test" ng-controller="DatepickerCtrl" style="background-color:black;">
 
 
-  <div class="col-md-1 col-md-offset-1"  translation-texts= "{buttonDefaultText:'Genre'}"ng-dropdown-multiselect="" options="example9data" group-by="type" selected-model="example9model" extra-settings="example9settings"></div>
+  <div class="col-md-1 col-md-offset-2"  translation-texts= "{buttonDefaultText:'Genre'}"ng-dropdown-multiselect="" options="example9data" group-by="type" selected-model="genres" extra-settings="example9settings"></div>
 
   <div class="col-md-3" >
     <input placeholder="Artist Name" type="text" class="form-control" ng-model="name"></input>
@@ -15,14 +19,9 @@
     <input placeholder="Enter Your Budget" step="500" type="number" min="0" class="form-control" ng-model="price" ></input>
   </div>
 
-  <div class="col-md-3" >
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Is free on this day" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="{{dt}}" max-date="'2020-06-22'" datepicker-options="dateOptions" datepicker-append-to-body="true" ng-required="true" close-text="Close" show-button-bar="false" />
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-default" ng-click="dateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-      </span>
-    </p>
-  </div>
+
+
+
 
 
 
@@ -31,34 +30,19 @@
   </div>
 
 
-</div
+</div>
 
+<div class="col-md-10 col-md-offset-1" style="margin-top:30px;">
+
+  <div class="col-md-12 " style="text-align: center;">
+    <h1 style="font-weight:normal;"><p>Search Result</p></h3>
+  </div>
   <div class="col-md-12 ">
-    <h3 style="font-weight:normal;"><p>Search Result</p></h3>
-    <br>
+    <hr>
+  
     <div class="row" style="padding:10px;">
 
-      <div  class="col-md-4 col-sm-4 col-xs-6 col-lg-4 " ng-repeat=" test in tests track by $index" style="padding:5px;">
-       <a ng-href="#" ng-controller="ModalControllerCtrl" ng-click="open(test); $event.preventDefault();">
-
-        <figure class="cap-top" style="width:100%; margin:0px;">
-          <img src="images/{{test.band_profile_picture}}" style="width:100%; height:200px;"/>
-          <figcaption style="width:100%; height:100%;">
-            <h4>{{test.band_name}}<h4>
-              <hr>
-              <h6>Type: Band</h6>
-              <h6>Genres: Acoustic Rock</h6>
-              <h6>Price: $5,000</h6>
-
-
-            
-          </figcaption>
-        </figure>
-
-      </a>
-
-
-    </div>
+      <div ng-include="'views/card.html'"></div>
   </div>
 </div>
 </div>

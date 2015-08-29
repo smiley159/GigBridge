@@ -12,7 +12,6 @@ angular.module('angelHackApp')
     var vm = this;
  	vm.getSoundById = function(id){
 
- 		console.log(id);
  		var request = $http({
  			method: "post",
  			url: "php/soundCloud.php", 

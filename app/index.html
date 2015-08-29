@@ -11,13 +11,20 @@
     <!-- end../bower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    
+
+
     <link rel="stylesheet" href="../bower_components/fullcalendar/dist/fullcalendar.css"/>
      <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-     <link rel="stylesheet" href="../bower_components/jquery.mb.YTPlayer/dist/css/jquery.mb.YTPlayer.min.css">
+    <!--  <link rel="stylesheet" href="../bower_components/jquery.mb.YTPlayer/dist/css/jquery.mb.YTPlayer.min.css"> -->
      <link rel="stylesheet" href="styles/caption.css">
-
+     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="styles/footer-distributed.css">
+       <link rel="stylesheet" href="styles/icon.css">
+       <link rel="stylesheet" href="styles/ghost-buttons.css">
+       <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,500,700' rel='stylesheet' type='text/css'>
      <link rel="stylesheet" href="styles/main.css">
+       <link rel="stylesheet" href="../bower_components/ng-ckeditor/ng-ckeditor.css">
+
 
      
     <!-- endbuild -->
@@ -29,9 +36,9 @@
 
     <!-- Add your site or application content here -->
 
-  <div class="header" id="navigation" style="border:none;">
+  <div ng-controller = "NavbarCtrl" class="header" id="navigation" style="border:none;">
     <div class="navbar navbar-default navbar-fixed-top" style="background-color:black;  height:8vh; border:none;" role="navigation">
-      <div class="container">
+      
         <div class="navbar-header">
 
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
@@ -41,48 +48,55 @@
             <span class="icon-bar"></span>
           </button>
 
-          <a class="navbar-brand" href="#/index">GigBridge</a>
+          <a class="navbar-brand" style="margin-left:20px;" href="#/index">GigBridge</a>
         </div> 
 
-        <div class="collapse navbar-collapse" id="js-navbar-collapse">
+        <div class="collapse navbar-collapse" ng-switch="isLogin()" id="js-navbar-collapse">
 
           <ul class="nav navbar-nav navbar-left" > 
-            <li><a id="Browse"href="#" ng-click="$event.preventDefault();"> Browse Artists</a></li>
-            <li><a href="#"> Voting</a></li>
-            <li><a href="#"> How We Roll</a></li>              
+            <li><a ng-href="#/browse" > Browse Artists</a></li>
+             
           </ul>
 
-          <ul class="nav navbar-nav navbar-right" > 
-           <li>  
-             <div class="btn-group" dropdown dropdown-append-to-body>
-              <button id="Sign Up"  class="btn horizontal-padding" style="color:white; background:transparent;" dropdown-toggle>
-               <h5>Sign Up <span class="caret"></span></h5>
-              </button>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="Sign Up">
 
-                <li role="menuitem"><a href="#">Artists</a></li>
-                <li class="divider"></li>
-                <li role="menuitem"><a href="#">Event Planner</a></li>
-              </ul>
-            </div>
+          <ul ng-switch-when="false"  class="nav navbar-nav navbar-right" style="margin-right:30px;"> 
+           <li >  
+            <a ng-click = "login()">
+             LOGIN
+           </a>
+         </li>
+         <li>
+           <a  ng-click = "signUp()">
+             SIGN UP
+           </a>
           </li>  
-              <li>  
-             <div class="btn-group" dropdown dropdown-append-to-body>
-              <button id="Login"  class="btn horizontal-padding" style="color:white; background:transparent;" dropdown-toggle>
-               <h5>Log In <span class="caret"></span></h5>
-              </button>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="Login">
+        </ul>
+        
+         <ul id="loginStatus" ng-switch-when="true" class="nav navbar-nav navbar-right" style="margin-right:20px;"> 
+          <li>  
+            <a ng-href = "#/myEvent/{{userObject.facebook_id}}">
+              My Events
+           </a>
+         </li>
+           <li >  
+            <a>
+              <span style="margin-right:10px;" ng-bind-html="userObject.first_name+userObject.last_name"></span>
+             <img class="img-circle" ng-src="{{userObject.profile_picture}}" style="width:25px; height:25px; margin:0px; "/>
+             
+           </a>
+         </li>
 
-                <li role="menuitem"><input class="btn btn-primary" value="Login With Facebook" style="height:100%;"/></li>
-                <li class="divider"></li>
-                <li role="menuitem"><a href="#">Event Planner</a></li>
-              </ul>
-            </div>
-          </li>
+         <li>  
+            <a ng-click = "logOut();">
+              Log Out
+           </a>
+         </li>
+         
+          
 
         </ul>
       </div>
-    </div>
+      
   </div>
 </div>
 
@@ -97,7 +111,34 @@
 
 
     
-      <div  ng-view=""></div>
+      <div  ng-view="" autoscroll="true"></div>
+
+      <div class="col-md-12" style="padding:0px; margin-bottom:0px;">
+    <footer class="footer-distributed">
+
+      <div class="footer-right">
+
+        <a href="https://www.facebook.com/lensodth"><i class="fa fa-facebook"></i></a>
+        <a href="https://twitter.com/lensodth"><i class="fa fa-twitter"></i></a>
+        <a href="mailto:team@lensod.com"><span class="icon-mail"></span></a>
+
+      </div>
+
+      <div class="footer-left">
+
+        <p class="footer-links">
+          <a href="#">Home</a>
+          ·
+          <a href="#/about">About</a>
+          .
+          <a href="#/faq">Faq</a>
+        </p>
+
+        <p>LENSOD &copy; 2015</p>
+      </div>
+
+    </footer>
+    </div>
     
     
   
@@ -121,10 +162,15 @@
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="../bower_components/ng-file-upload/ng-file-upload.js"></script>
+
        <script src="../bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
     <script src="../bower_components/angular-resource/angular-resource.js"></script>
     <script src="../bower_components/angular-route/angular-route.js"></script>
+       <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+     <script src="../bower_components/ng-ckeditor/libs/ckeditor/ckeditor.js"></script>
+     <script src="../bower_components/ng-ckeditor/src/scripts/02-directive.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="../bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js"></script>
     <script type="text/javascript" src="../bower_components/moment/min/moment.min.js"></script>
@@ -132,9 +178,28 @@
 <script type="text/javascript" src="../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 <script type="text/javascript" src="../bower_components/fullcalendar/dist/gcal.js"></script>
 
+
+
 <script src="../bower_components/jquery.mb.YTPlayer/dist/jquery.mb.YTPlayer.js"></script>
 <script src="../bower_components/angularjs-dropdown-multiselect/dist/angularjs-dropdown-multiselect.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.min.js"></script>
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script type="text/javascript">
+        google.maps.event.addDomListener(window, 'load', function () {
+            var places = new google.maps.places.Autocomplete(document.getElementById('txtPlaces'));
+            google.maps.event.addListener(places, 'place_changed', function () {
+                var place = places.getPlace();
+                var address = place.formatted_address;
+                var latitude = place.geometry.location.A;
+                var longitude = place.geometry.location.F;
+                // var mesg = "Address: " + address;
+                // mesg += "\nLatitude: " + latitude;
+                // mesg += "\nLongitude: " + longitude;
+                // alert(mesg);
+            });
+        });
+    </script>
 
 
     <!-- end../bower -->
@@ -160,6 +225,29 @@
         <script src="scripts/services/profile.js"></script>
         <script src="scripts/filters/datetime.js"></script>
         <script src="scripts/controllers/facebooklogin.js"></script>
+        <script src="scripts/controllers/booking.js"></script>
+        <script src="scripts/services/booking.js"></script>
+        <script src="scripts/controllers/artistpofile.js"></script>
+        <script src="scripts/controllers/loginmodal.js"></script>
+        <script src="scripts/controllers/signupmodal.js"></script>
+        <script src="scripts/services/signupartist.js"></script>
+        <script src="scripts/controllers/makedeal.js"></script>
+        <script src="scripts/controllers/bookingsummary.js"></script>
+        <script src="scripts/services/authfactory.js"></script>
+        <script src="scripts/controllers/navbar.js"></script>
+        <script src="scripts/services/facebook.js"></script>
+        <script src="scripts/controllers/myevent.js"></script>
+        <script src="scripts/filters/requeststatus.js"></script>
+        <script src="scripts/controllers/plannerregister.js"></script>
+        <script src="scripts/controllers/confirmbooking.js"></script>
+        <script src="scripts/controllers/confirmregister.js"></script>
+        <script src="scripts/controllers/wedding.js"></script>
+        <script src="scripts/controllers/party.js"></script>
+        <script src="scripts/controllers/festival.js"></script>
+        <script src="scripts/controllers/browse.js"></script>
+        <script src="scripts/filters/genrefilter.js"></script>
+        <script src="scripts/services/email.js"></script>
+        <script src="scripts/controllers/faq.js"></script>
         <!-- endbuild -->
 </body>
 </html>
